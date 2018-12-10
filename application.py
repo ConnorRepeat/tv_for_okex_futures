@@ -14,7 +14,7 @@ def get_config():
     config = {
         "supports_search": True,
         "supports_group_request": False,
-        "supported_resolutions": ["1", "5", "15", "30", "60", "1D", "1W", "1M"],
+        "supported_resolutions": ["1", "5", "15", "30", "60", "240", "1D"],
         "supports_marks": False,
         "supports_time": True
     }
