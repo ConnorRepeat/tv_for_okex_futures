@@ -14,7 +14,7 @@ def get_config():
     config = {
         "supports_search": True,
         "supports_group_request": False,
-        "supported_resolutions": ["1", "5", "15", "30", "60", "240", "1D"],
+        "supported_resolutions": ["1", "5", "15", "30", "60", "240"],
         "supports_marks": False,
         "supports_time": True
     }
@@ -35,7 +35,7 @@ def search():
             "full_name": "OKEx:EOSUSD3M",
             "description": "EOSUSD 季度合约",
             "exchange": "OKEx",
-            "ticker": "EOS-USD-181228",
+            "ticker": "EOS-USD-190329",
             "type": "futures"
         },
         {
@@ -43,7 +43,7 @@ def search():
             "full_name": "OKEx:XRPUSD3M",
             "description": "XRPUSD 季度合约",
             "exchange": "OKEx",
-            "ticker": "XRP-USD-181228",
+            "ticker": "XRP-USD-190329",
             "type": "futures"
         }
     ]
@@ -71,14 +71,14 @@ def get_symbols():
         "data_status": "pulsed"
     }
 
-    if symbol == 'EOSUSD3M' or symbol == 'EOS-USD-181228':
+    if symbol == 'EOSUSD3M' or symbol == 'EOS-USD-190329':
         symbol_cfg["name"] = "EOSUSD3M"
-        symbol_cfg["ticker"] = "EOS-USD-181228"
+        symbol_cfg["ticker"] = "EOS-USD-190329"
         symbol_cfg["description"] = "EOSUSD 季度合约"
         return json.dumps(symbol_cfg)
-    elif symbol == 'XRPUSD3M' or symbol == 'XRP-USD-181228':
+    elif symbol == 'XRPUSD3M' or symbol == 'XRP-USD-190329':
         symbol_cfg["name"] = "XRPUSD3M"
-        symbol_cfg["ticker"] = "XRP-USD-181228"
+        symbol_cfg["ticker"] = "XRP-USD-190329"
         symbol_cfg["description"] = "XRPUSD 季度合约"
         return json.dumps(symbol_cfg)
     return ''
