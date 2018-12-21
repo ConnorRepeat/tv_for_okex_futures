@@ -81,6 +81,10 @@ def get_symbols():
         symbol_cfg["ticker"] = "XRP-USD-190329"
         symbol_cfg["description"] = "XRPUSD 季度合约"
         return json.dumps(symbol_cfg)
+    elif symbol == 'LTCUSD3M' or symbol == 'LTC-USD-190329':
+        symbol_cfg["name"] = "LTCUSD3M"
+        symbol_cfg["ticker"] = "LTC-USD-190329"
+        symbol_cfg["description"] = "LTCUSD 季度合约"
     return ''
 
 
