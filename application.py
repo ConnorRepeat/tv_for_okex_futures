@@ -45,6 +45,14 @@ def search():
             "exchange": "OKEx",
             "ticker": "XRP-USD-190329",
             "type": "futures"
+        },
+        {
+            "symbol": "LTCUSD3M",
+            "full_name": "OKEx:LTCUSD3M",
+            "description": "LTCUSD 季度合约",
+            "exchange": "OKEx",
+            "ticker": "LTC-USD-190329",
+            "type": "futures"
         }
     ]
     return json.dumps(symbols)
