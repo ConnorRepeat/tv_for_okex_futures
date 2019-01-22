@@ -59,7 +59,7 @@ def get_history_kline(symbol, time_from, time_to, resolution):
     c = []
     v = []
     for elem in comlete_kline:
-        t.append(int(elem[0] / 1000))
+        t.append(int(float(elem[0]) / 1000))
         o.append(float(elem[1]))
         h.append(float(elem[2]))
         l.append(float(elem[3]))
