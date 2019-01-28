@@ -1,3 +1,4 @@
+import datetime
 import json
 import time
 
@@ -11,6 +12,15 @@ secret = okex_cfg.get('secret')
 passphrase = okex_cfg.get('passphrase')
 
 okex = future.FutureAPI(api_key, secret, passphrase, True)
+
+
+def convert_iso2timestamp(iso_time):
+    # '1984-06-02T19:05:00.000Z'
+    utc_dt = datetime.datetime.strptime(iso_time, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+    # Convert UTC datetime to seconds since the Epoch
+    timestamp = (utc_dt - datetime.datetime(1970, 1, 1)).total_seconds()
+    return timestamp
 
 
 def get_history_kline(symbol, time_from, time_to, resolution):
@@ -59,7 +69,7 @@ def get_history_kline(symbol, time_from, time_to, resolution):
     c = []
     v = []
     for elem in comlete_kline:
-        t.append(int(float(elem[0]) / 1000))
+        t.append(int(float(convert_iso2timestamp(elem[0])) / 1000))
         o.append(float(elem[1]))
         h.append(float(elem[2]))
         l.append(float(elem[3]))
@@ -79,5 +89,8 @@ def get_history_kline(symbol, time_from, time_to, resolution):
 
 
 if __name__ == '__main__':
-    test = get_history_kline('EOS-USD-181228', 1544371200, 1544457600, '5')
-    print(test)
+    # test = get_history_kline('EOS-USD-181228', 1544371200, 1544457600, '5')
+    # print(test)
+    t = '1984-06-02T19:05:00.000Z'
+    t2 = convert_iso2timestamp(t)
+    print(t2)
