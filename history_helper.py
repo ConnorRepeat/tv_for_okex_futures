@@ -25,7 +25,7 @@ def convert_iso2timestamp(iso_time):
 
 def convert_timestamp2iso(timestamp):
     utc_dt = datetime.datetime(1970, 1, 1) + datetime.timedelta(seconds=timestamp)
-    return utc_dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+    return utc_dt.strftime('%Y-%m-%dT%H:%M:%S.%.3fZ')
 
 
 def get_history_kline(symbol, time_from, time_to, resolution):
@@ -48,8 +48,8 @@ def get_history_kline(symbol, time_from, time_to, resolution):
 
         try:
             resp = okex.get_kline(instrument_id=symbol,
-                                  start=convert_timestamp2iso(start_time),
-                                  end=convert_timestamp2iso(end_time),
+                                  start=convert_timestamp2ok(start_time),
+                                  end=convert_timestamp2ok(end_time),
                                   granularity=resolution)
             comlete_kline.extend(resp[::-1])
         except Exception:
@@ -74,7 +74,7 @@ def get_history_kline(symbol, time_from, time_to, resolution):
     c = []
     v = []
     for elem in comlete_kline:
-        t.append(int(float(convert_iso2timestamp(elem[0])) / 1000))
+        t.append(int(float(convert_iso2timestamp(elem[0]))))
         o.append(float(elem[1]))
         h.append(float(elem[2]))
         l.append(float(elem[3]))
